@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.header a {
+  display: inline-block;
+  padding: 8px 24px;
+  font-size: 1.2rem;
+}
+
+.header a:hover,
+.header a:focus,
+.header a:active {
+  color: #0070f3;
+  border-color: #0070f3;
+}
