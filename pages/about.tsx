@@ -1,8 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { Footer } from "../components/Footer";
-import { Headline } from "../components/Headline";
-import { Links } from "../components/Links";
+import { Main } from "../components/Main";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
@@ -14,10 +13,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <Headline page="about" />
-        <Links />
-      </main>
+      <Main page="about">
+        <code className={styles.code}>pages/about.tsx</code>
+      </Main>
       <Footer />
     </div>
   );
