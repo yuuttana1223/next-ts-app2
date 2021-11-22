@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import { Headline } from "../components/Headline";
 import { Links } from "../components/Links";
-import styles from "../styles/Home.module.css";
+import classes from "./Main.module.css";
 
 export type MainProps = {
   page: string;
@@ -14,13 +14,14 @@ export type MainProps = {
   boolean?: boolean;
   code?: JSX.Element;
   onClick?: () => void;
-  children: ReactNode;
 };
 
 export const Main: React.VFC<MainProps> = (props) => {
   return (
-    <main className={styles.main}>
-      <Headline page={props.page}>{props.children}</Headline>
+    <main className={classes.main}>
+      <Headline page={props.page}>
+        <code className={classes.code}>pages/{props.page}.tsx</code>
+      </Headline>
       <Links />
     </main>
   );
