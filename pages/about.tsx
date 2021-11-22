@@ -1,11 +1,11 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
 import { Footer } from "../components/Footer";
+import { Headline } from "../components/Headline";
 import { Links } from "../components/Links";
 import styles from "../styles/Home.module.css";
 
-export const Home: NextPage = () => {
+const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
@@ -15,12 +15,7 @@ export const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>About Page</h1>
-
-        <p className={styles.description}>
-          Get started by editing{" "}
-          <code className={styles.code}>pages/index.tsx</code>
-        </p>
+        <Headline page="about" />
         <Links />
       </main>
       <Footer />
