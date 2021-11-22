@@ -23,4 +23,5 @@ const Home: NextPage = () => {
   );
 };
 
+// export defaultに決まっている
 export default Home;
