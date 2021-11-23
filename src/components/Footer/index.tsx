@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import classes from "./Footer.module.css";
+import classes from "src/components/Footer/Footer.module.css";
 
 export const Footer: React.VFC = () => {
   return (
