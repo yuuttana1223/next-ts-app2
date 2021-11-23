@@ -1,7 +1,7 @@
-import React, { ReactNode } from "react";
-import { Headline } from "../components/Headline";
-import { Links } from "../components/Links";
-import classes from "./Main.module.css";
+import React from "react";
+import classes from "src/components/Main/Main.module.css";
+import { Headline } from "src/components/Headline";
+import { Links } from "src/components/Links";
 
 export type MainProps = {
   page: string;
