@@ -4,8 +4,14 @@ import classes from "src/styles/Home.module.css";
 import { Header } from "src/components/Header";
 import { Main } from "src/components/Main";
 import { Footer } from "src/components/Footer";
+import { MouseEvent, useCallback } from "react";
 
 const Home: NextPage = () => {
+  const foo = 1;
+  const handleClick = useCallback((e: MouseEvent<HTMLAnchorElement>): void => {
+    e.preventDefault();
+    alert(foo);
+  }, []);
   return (
     <div className={classes.container}>
       <Head>
@@ -13,6 +19,9 @@ const Home: NextPage = () => {
       </Head>
 
       <Header />
+      <a href="about" onClick={handleClick}>
+        ボタン
+      </a>
       <Main
         page="index"
         number={1111}
