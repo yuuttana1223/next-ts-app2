@@ -4,10 +4,19 @@ import classes from "src/styles/Home.module.css";
 import { Header } from "src/components/Header";
 import { Main } from "src/components/Main";
 import { Footer } from "src/components/Footer";
-import { MouseEvent, useEffect, useState, useCallback } from "react";
+import {
+  MouseEvent,
+  useEffect,
+  useState,
+  useCallback,
+  ChangeEvent,
+} from "react";
 
 const Home: NextPage = () => {
   const [count, setCount] = useState<number>(1);
+  const [text, setText] = useState<string>("");
+  const [isShow, setIsShow] = useState<boolean>(true);
+
   const handleClick = useCallback(
     (e: MouseEvent<HTMLButtonElement>): void => {
       if (count < 10) {
@@ -16,6 +25,18 @@ const Home: NextPage = () => {
     },
     [count]
   );
+
+  const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>): void => {
+    if (e.target.value.length > 5) {
+      alert("5文字以内にしてください。");
+      return;
+    }
+    setText(e.target.value.trim());
+  }, []);
+
+  const handleDisplay = useCallback(() => {
+    setIsShow((prevIsShow) => !prevIsShow);
+  }, []);
 
   useEffect(() => {
     document.body.style.backgroundColor = "lightblue";
@@ -29,9 +50,11 @@ const Home: NextPage = () => {
       <Head>
         <title>Index Page</title>
       </Head>
-      <h1>{count}</h1>
       <Header />
+      {isShow && <h1>{count}</h1>}
       <button onClick={handleClick}>ボタン</button>
+      <button onClick={handleDisplay}>{isShow ? "非表示" : "表示"}</button>
+      <input type="text" value={text} onChange={handleChange} />
       <Main
         page="index"
         number={1111}
