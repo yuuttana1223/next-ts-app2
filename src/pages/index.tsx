@@ -16,6 +16,7 @@ const Home: NextPage = () => {
   const [count, setCount] = useState<number>(1);
   const [text, setText] = useState<string>("");
   const [isShow, setIsShow] = useState<boolean>(true);
+  const [array, setArray] = useState<string[]>([]);
 
   const handleClick = useCallback(
     (e: MouseEvent<HTMLButtonElement>): void => {
@@ -38,6 +39,13 @@ const Home: NextPage = () => {
     setIsShow((prevIsShow) => !prevIsShow);
   }, []);
 
+  const handleAdd = useCallback(() => {
+    setArray((prevArray) => {
+      setText("");
+      return [...prevArray, text];
+    });
+  }, [text]);
+
   useEffect(() => {
     document.body.style.backgroundColor = "lightblue";
     return () => {
@@ -55,6 +63,12 @@ const Home: NextPage = () => {
       <button onClick={handleClick}>ボタン</button>
       <button onClick={handleDisplay}>{isShow ? "非表示" : "表示"}</button>
       <input type="text" value={text} onChange={handleChange} />
+      <button onClick={handleAdd}>追加</button>
+      <ul>
+        {array.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
       <Main
         page="index"
         number={1111}
