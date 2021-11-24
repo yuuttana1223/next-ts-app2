@@ -4,21 +4,18 @@ import classes from "src/styles/Home.module.css";
 import { Header } from "src/components/Header";
 import { Main } from "src/components/Main";
 import { Footer } from "src/components/Footer";
-import { MouseEvent, useCallback, useEffect } from "react";
+import { MouseEvent, useEffect, useState } from "react";
 
 const Home: NextPage = () => {
-  const foo = 1;
-  const handleClick = useCallback((e: MouseEvent<HTMLAnchorElement>): void => {
-    e.preventDefault();
-    alert(foo);
-  }, []);
+  const [count, setCount] = useState<number>(1);
+  const handleClick = (e: MouseEvent<HTMLButtonElement>): void => {
+    setCount((prevCount) => prevCount + 1);
+    setCount((prevCount) => prevCount + 1);
+  };
 
   useEffect(() => {
-    console.log("マウント時");
-
     document.body.style.backgroundColor = "lightblue";
     return () => {
-      console.log("アンマウント時");
       document.body.style.backgroundColor = "";
     };
   }, []);
@@ -28,11 +25,9 @@ const Home: NextPage = () => {
       <Head>
         <title>Index Page</title>
       </Head>
-
+      <h1>{count}</h1>
       <Header />
-      <a href="about" onClick={handleClick}>
-        ボタン
-      </a>
+      <button onClick={handleClick}>ボタン</button>
       <Main
         page="index"
         number={1111}
