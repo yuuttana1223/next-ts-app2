@@ -4,14 +4,18 @@ import classes from "src/styles/Home.module.css";
 import { Header } from "src/components/Header";
 import { Main } from "src/components/Main";
 import { Footer } from "src/components/Footer";
-import { MouseEvent, useEffect, useState } from "react";
+import { MouseEvent, useEffect, useState, useCallback } from "react";
 
 const Home: NextPage = () => {
   const [count, setCount] = useState<number>(1);
-  const handleClick = (e: MouseEvent<HTMLButtonElement>): void => {
-    setCount((prevCount) => prevCount + 1);
-    setCount((prevCount) => prevCount + 1);
-  };
+  const handleClick = useCallback(
+    (e: MouseEvent<HTMLButtonElement>): void => {
+      if (count < 10) {
+        setCount((prevCount) => prevCount + 1);
+      }
+    },
+    [count]
+  );
 
   useEffect(() => {
     document.body.style.backgroundColor = "lightblue";
