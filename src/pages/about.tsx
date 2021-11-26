@@ -3,16 +3,22 @@ import Head from "next/head";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
 import { Main } from "src/components/Main";
-import { useBgLightBlue } from "src/hooks/useBgLightBlue";
-import { useCounter } from "src/hooks/useCounter";
-import { useInputArray } from "src/hooks/useInputArray";
 import classes from "src/styles/Home.module.css";
+import { useCounter } from "../hooks/useCounter";
+import { useInputArray } from "../hooks/useInputArray";
 
-const About: NextPage = () => {
-  const { count, isShow, handleClick, handleDisplay } = useCounter();
-  const { text, array, handleChange, handleAdd } = useInputArray();
-  useBgLightBlue();
+type Props = ReturnType<typeof useCounter> & ReturnType<typeof useInputArray>;
 
+const About: NextPage<Props> = ({
+  count,
+  isShow,
+  handleClick,
+  handleDisplay,
+  text,
+  array,
+  handleChange,
+  handleAdd,
+}) => {
   return (
     <div className={classes.container}>
       <Head>

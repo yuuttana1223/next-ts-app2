@@ -6,19 +6,19 @@ import { Main } from "src/components/Main";
 import { Footer } from "src/components/Footer";
 import { useCounter } from "src/hooks/useCounter";
 import { useInputArray } from "src/hooks/useInputArray";
-import { useBgLightBlue } from "src/hooks/useBgLightBlue";
 
-type Props = {
-  foo: number;
-};
+type Props = ReturnType<typeof useCounter> & ReturnType<typeof useInputArray>;
 
-const Home: NextPage<Props> = ({ foo }) => {
-  console.log(foo); // undefinedになる
-
-  const { count, isShow, handleClick, handleDisplay } = useCounter();
-  const { text, array, handleChange, handleAdd } = useInputArray();
-  useBgLightBlue();
-
+const Home: NextPage<Props> = ({
+  count,
+  isShow,
+  handleClick,
+  handleDisplay,
+  text,
+  array,
+  handleChange,
+  handleAdd,
+}) => {
   return (
     <div className={classes.container}>
       <Head>
