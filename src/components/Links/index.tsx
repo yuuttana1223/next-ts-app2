@@ -6,10 +6,10 @@ type Props = {
   items: Items[];
 };
 
-export const Links: React.VFC<Props> = ({ items }) => {
+export const Links: React.VFC<Props> = (props) => {
   return (
     <div className={classes.grid}>
-      {items.map((item, index) => (
+      {props.items.map((item, index) => (
         <a key={index} href={item.url} className={classes.card}>
           <h2>{item.title}</h2>
           <p>{item.description}</p>
