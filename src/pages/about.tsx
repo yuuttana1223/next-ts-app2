@@ -10,10 +10,10 @@ import { useInputArray } from "../hooks/useInputArray";
 type Props = ReturnType<typeof useCounter> & ReturnType<typeof useInputArray>;
 
 const About: NextPage<Props> = ({
-  count,
   isShow,
   handleClick,
   handleDisplay,
+  doubleCount,
   text,
   array,
   handleChange,
@@ -26,7 +26,7 @@ const About: NextPage<Props> = ({
       </Head>
       <Header />
       <button onClick={handleDisplay}>{isShow ? "非表示" : "表示"}</button>
-      {isShow && <h1>{count}</h1>}
+      {isShow && <h1>{doubleCount}</h1>}
       <button onClick={handleClick}>ボタン</button>
 
       <input type="text" value={text} onChange={handleChange} />

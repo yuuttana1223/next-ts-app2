@@ -1,8 +1,12 @@
-import { MouseEvent, useCallback, useState } from "react";
+import { MouseEvent, useCallback, useMemo, useState } from "react";
 
 export const useCounter = () => {
   const [count, setCount] = useState<number>(1);
   const [isShow, setIsShow] = useState<boolean>(true);
+
+  const doubleCount: number = useMemo(() => {
+    return count * 2;
+  }, [count]);
 
   const handleClick = useCallback(
     (e: MouseEvent<HTMLButtonElement>): void => {
@@ -17,5 +21,5 @@ export const useCounter = () => {
     setIsShow((prevIsShow) => !prevIsShow);
   }, []);
 
-  return { count, isShow, handleClick, handleDisplay };
+  return { count, isShow, handleClick, handleDisplay, doubleCount };
 };
