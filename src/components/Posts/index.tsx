@@ -13,22 +13,16 @@ type State = {
   error: unknown;
 };
 
-type Action = State & {
+type Action = Partial<State> & {
   type: "end" | "error";
 };
 
-const initialState: State = {
-  data: [],
-  loading: true,
-  error: null,
-};
-
-const reducer = (state: State, action: Action) => {
+const reducer = (state: State, action: Action): State | never => {
   switch (action.type) {
     case "end":
       return {
         ...state,
-        data: action.data,
+        data: action.data ?? state.data,
         loading: false,
       };
     case "error":
@@ -42,38 +36,39 @@ const reducer = (state: State, action: Action) => {
   }
 };
 
+const initialState: State = {
+  data: [],
+  loading: true,
+  error: null,
+};
+
 export const Posts: VFC = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  console.log(state);
 
   const fetchPosts = useCallback(async (): Promise<void> => {
     try {
       const res: Response = await fetch(
-        "https://jsonplaceholder.typicode.com/postsa"
+        "https://jsonplaceholder.typicode.com/posts"
       );
       if (!res.ok) {
         throw new Error("エラーが発生したため、データの取得に失敗しました");
       }
       const json: Post[] = await res.json();
       dispatch({
-        ...state,
         type: "end",
         data: json,
       });
     } catch (error: unknown) {
       dispatch({
-        ...state,
-        type: "end",
+        type: "error",
         error,
       });
     }
-  }, [state]);
+  }, []);
 
   useEffect(() => {
     fetchPosts();
   }, [fetchPosts]);
-
-  console.log("ff");
 
   if (state.loading) {
     return <div>ローディング中</div>;
