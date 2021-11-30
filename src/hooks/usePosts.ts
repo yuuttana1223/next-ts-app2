@@ -1,30 +1,9 @@
+import { Post } from "src/types/post";
+import { fetcher } from "src/utils/fetcher";
 import useSWR from "swr";
 
-type Post = {
-  useId: number;
-  id: number;
-  title: string;
-  body: string;
-};
-
-const fetcher = async (url: string): Promise<Post[]> => {
-  const res: Response = await fetch(url);
-  if (!res.ok) {
-    throw new Error("エラーが発生したため、データの取得に失敗しました。");
-  }
-  const json: Post[] = await res.json();
-  return json;
-};
-
-type UsePosts = {
-  data?: Post[];
-  error: unknown;
-  isLoading: boolean;
-  isEmpty?: boolean;
-};
-
-export const usePosts = (): UsePosts => {
-  const { data, error } = useSWR<Post[], unknown>(
+export const usePosts = () => {
+  const { data, error } = useSWR<Post[], Error>(
     "https://jsonplaceholder.typicode.com/posts",
     fetcher
   );
@@ -33,6 +12,6 @@ export const usePosts = (): UsePosts => {
     data,
     error,
     isLoading: !error && !data,
-    isEmpty: data && data.length === 0,
+    isEmpty: data?.length === 0,
   };
 };
