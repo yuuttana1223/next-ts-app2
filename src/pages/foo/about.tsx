@@ -4,8 +4,8 @@ import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
 import { Main } from "src/components/Main";
 import classes from "src/styles/Home.module.css";
-import { useCounter } from "../hooks/useCounter";
-import { useInputArray } from "../hooks/useInputArray";
+import { useCounter } from "../../hooks/useCounter";
+import { useInputArray } from "../../hooks/useInputArray";
 
 type Props = ReturnType<typeof useCounter> & ReturnType<typeof useInputArray>;
 

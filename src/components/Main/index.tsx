@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import classes from "src/components/Main/Main.module.css";
 import { Headline } from "src/components/Headline";
 import { Links } from "src/components/Links";
+import { ITEMS } from "src/constants";
 
-export type MainProps = {
+export type Props = {
   page: string;
   number?: number;
   array?: number[];
@@ -16,13 +17,18 @@ export type MainProps = {
   onClick?: () => void;
 };
 
-export const Main: React.VFC<MainProps> = (props) => {
+export const Main: React.VFC<Props> = (props) => {
+  const [items, setItems] = useState(ITEMS);
+  const handleReduce = useCallback((): void => {
+    setItems((prevItems) => prevItems.slice(0, prevItems.length - 1));
+  }, []);
+
   return (
     <main className={classes.main}>
-      <Headline page={props.page}>
-        <code className={classes.code}>pages/{props.page}.tsx</code>
+      <Headline page={props.page} handleReduce={handleReduce}>
+        <code className={classes.code}>{items.length}</code>
       </Headline>
-      <Links />
+      <Links items={items} />
     </main>
   );
 };
