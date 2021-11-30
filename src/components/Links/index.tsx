@@ -1,9 +1,9 @@
 import React from "react";
 import classes from "src/components/Links/Links.module.css";
-import { Items } from "src/components/Main";
+import { Item } from "src/types";
 
 type Props = {
-  items: Items[];
+  items: Item[];
 };
 
 export const Links: React.VFC<Props> = (props) => {

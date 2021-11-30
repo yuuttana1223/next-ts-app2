@@ -11,7 +11,7 @@ export const useInputArray = () => {
     setText(e.target.value.trim());
   }, []);
 
-  const handleAdd = useCallback(() => {
+  const handleAdd = useCallback((): void => {
     setArray((prevArray) => {
       setText("");
       return [...prevArray, text];

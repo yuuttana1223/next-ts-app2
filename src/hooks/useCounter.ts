@@ -4,7 +4,7 @@ export const useCounter = () => {
   const [count, setCount] = useState<number>(1);
   const [isShow, setIsShow] = useState<boolean>(true);
 
-  const doubleCount: number = useMemo(() => {
+  const doubleCount = useMemo((): number => {
     return count * 2;
   }, [count]);
 
@@ -17,7 +17,7 @@ export const useCounter = () => {
     [count]
   );
 
-  const handleDisplay = useCallback(() => {
+  const handleDisplay = useCallback((): void => {
     setIsShow((prevIsShow) => !prevIsShow);
   }, []);
 

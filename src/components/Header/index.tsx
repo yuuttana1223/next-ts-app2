@@ -1,16 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import classes from "src/components/Header/Header.module.css";
-
-type NavItem = {
-  url: string;
-  label: string;
-};
-
-const NAV_ITEMS: NavItem[] = [
-  { url: "/", label: "Index" },
-  { url: "/about", label: "About" },
-];
+import { NAV_ITEMS } from "src/constants";
 
 export const Header: React.VFC = () => {
   return (
