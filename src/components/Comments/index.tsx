@@ -1,6 +1,6 @@
 import { VFC } from "react";
 import Link from "next/link";
-import { useComments } from "src/hooks/useComments";
+import { useComments } from "src/hooks/useFetchJsonArray";
 
 export const Comments: VFC = () => {
   const { data, error, isLoading, isEmpty } = useComments();

@@ -1,6 +1,6 @@
 import { VFC } from "react";
 import Link from "next/link";
-import { useUsers } from "src/hooks/useUsers";
+import { useUsers } from "src/hooks/useFetchJsonArray";
 
 export const Users: VFC = () => {
   const { data, error, isLoading, isEmpty } = useUsers();

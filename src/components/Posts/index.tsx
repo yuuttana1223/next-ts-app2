@@ -1,6 +1,6 @@
 import { VFC } from "react";
-import { usePosts } from "src/hooks/usePosts";
 import Link from "next/link";
+import { usePosts } from "src/hooks/useFetchJsonArray";
 
 export const Posts: VFC = () => {
   const { data, error, isLoading, isEmpty } = usePosts();
