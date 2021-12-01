@@ -1,20 +1,20 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { Header } from "src/components/Header";
-import { Posts as PostsComponent } from "src/components/Posts";
+import { Comments as CommentComponent } from "src/components/Comments";
 
-const Posts: NextPage = () => {
+const Comments: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Posts Page</title>
+        <title>Comments Page</title>
       </Head>
       <div>
         <Header />
-        <PostsComponent />
+        <CommentComponent />
       </div>
     </>
   );
 };
 
-export default Posts;
+export default Comments;

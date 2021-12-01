@@ -1,14 +1,14 @@
 import type { NextPage } from "next";
 import { Header } from "src/components/Header";
-import { Post as PostComponent } from "src/components/Post";
+import { User as UserComponent } from "src/components/User";
 
-const Post: NextPage = () => {
+const User: NextPage = () => {
   return (
     <div>
       <Header />
-      <PostComponent />
+      <UserComponent />
     </div>
   );
 };
 
-export default Post;
+export default User;

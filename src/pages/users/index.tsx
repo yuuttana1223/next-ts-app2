@@ -1,20 +1,20 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { Header } from "src/components/Header";
-import { Posts as PostsComponent } from "src/components/Posts";
+import { Users as UserComponent } from "src/components/Users";
 
-const Posts: NextPage = () => {
+const Users: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Posts Page</title>
+        <title>Users Page</title>
       </Head>
       <div>
         <Header />
-        <PostsComponent />
+        <UserComponent />
       </div>
     </>
   );
 };
 
-export default Posts;
+export default Users;
