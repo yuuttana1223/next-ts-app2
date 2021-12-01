@@ -1,9 +1,9 @@
 import { VFC } from "react";
 import Head from "next/head";
-import { useUser } from "src/hooks/useUser";
+import { useUser } from "src/hooks/useFetchJson";
 
 export const User: VFC = () => {
-  const { user, error, isLoading } = useUser();
+  const { data: user, error, isLoading } = useUser();
 
   console.log({ user, error, isLoading });
 

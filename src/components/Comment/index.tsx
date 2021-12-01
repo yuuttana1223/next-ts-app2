@@ -1,11 +1,9 @@
 import { VFC } from "react";
 import Head from "next/head";
-import { useComment } from "src/hooks/useComment";
+import { useComment } from "src/hooks/useFetchJson";
 
 export const Comment: VFC = () => {
-  const { comment, error, isLoading } = useComment();
-
-  console.log({ comment, error, isLoading });
+  const { data: comment, error, isLoading } = useComment();
 
   if (isLoading) {
     return <div>ローディング中</div>;

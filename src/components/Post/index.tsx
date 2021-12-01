@@ -1,6 +1,6 @@
 import { VFC } from "react";
-import { usePost } from "src/hooks/usePost";
 import Head from "next/head";
+import { usePost } from "src/hooks/useFetchJson";
 
 export const Post: VFC = () => {
   const { post, user, error, isLoading } = usePost();
