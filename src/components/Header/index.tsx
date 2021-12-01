@@ -1,9 +1,9 @@
-import React from "react";
+import { VFC } from "react";
 import Link from "next/link";
 import classes from "src/components/Header/Header.module.css";
 import { NAV_ITEMS } from "src/constants";
 
-export const Header: React.VFC = () => {
+export const Header: VFC = () => {
   return (
     <header className={classes.header}>
       {NAV_ITEMS.map((item, index) => (

@@ -5,7 +5,7 @@ import { Post as PostComponent } from "src/components/Post";
 
 const Post: NextPage = () => {
   return (
-    <div className={classes.container}>
+    <div>
       <Header />
       <PostComponent />
     </div>

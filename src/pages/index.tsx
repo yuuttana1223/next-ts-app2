@@ -5,7 +5,7 @@ import classes from "src/styles/Home.module.css";
 
 const Home: NextPage = () => {
   return (
-    <div className={classes.container}>
+    <div>
       <Head>
         <title>Home Page</title>
       </Head>

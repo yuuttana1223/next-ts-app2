@@ -6,7 +6,7 @@ import { Posts as PostsComponent } from "src/components/Posts";
 
 const Posts: NextPage = () => {
   return (
-    <div className={classes.container}>
+    <div>
       <Head>
         <title>Posts Page</title>
       </Head>
