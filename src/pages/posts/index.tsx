@@ -4,11 +4,11 @@ import classes from "src/styles/Home.module.css";
 import { Header } from "src/components/Header";
 import { Posts } from "src/components/Posts";
 
-const Home: NextPage = () => {
+const PostsPage: NextPage = () => {
   return (
     <div className={classes.container}>
       <Head>
-        <title>Index Page</title>
+        <title>Posts Page</title>
       </Head>
       <Header />
       <Posts />
@@ -16,4 +16,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default PostsPage;
