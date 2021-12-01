@@ -24,6 +24,6 @@ export const ITEMS = [
 ];
 
 export const NAV_ITEMS = [
-  { url: "/", label: "Index" },
+  { url: "/posts", label: "Posts" },
   { url: "/about", label: "About" },
 ];
