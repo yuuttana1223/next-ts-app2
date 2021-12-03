@@ -16,22 +16,25 @@ const useFetchJsonArray = <T>(url: string) => {
   };
 };
 
+// posts
 export const usePosts = () => {
   return useFetchJsonArray<Post>(`${API_URL}/posts`);
 };
 
+export const usePostsByUserId = (id?: number) => {
+  return useFetchJsonArray<Post>(`${API_URL}/posts?userId=${id}`);
+};
+
+// users
 export const useUsers = () => {
   return useFetchJsonArray<User>(`${API_URL}/users`);
 };
 
+// comments
 export const useComments = () => {
   return useFetchJsonArray<Comment>(`${API_URL}/comments`);
 };
 
 export const useCommentsByPostId = (id?: number) => {
   return useFetchJsonArray<Post>(`${API_URL}/comments?postId=${id}`);
-};
-
-export const usePostsByUserId = (id?: number) => {
-  return useFetchJsonArray<Post>(`${API_URL}/posts?userId=${id}`);
 };

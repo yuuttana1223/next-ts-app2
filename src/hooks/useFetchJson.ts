@@ -19,20 +19,23 @@ const useFetchJson = <T>(parent: string, id?: string | number | string[]) => {
   };
 };
 
+// user
 export const useUser = () => {
   return useFetchJson<User>("users", useRouter().query.id);
 };
 
+export const useUserByPostUserId = (userId?: number) => {
+  return useFetchJson<User>("users", userId);
+};
+
+// comment
 export const useComment = () => {
   return useFetchJson<Comment>("comments", useRouter().query.id);
 };
 
+// post
 export const usePost = () => {
   return useFetchJson<Post>("posts", useRouter().query.id);
-};
-
-export const useUserByPostUserId = (userId?: number) => {
-  return useFetchJson<User>("users", userId);
 };
 
 export const usePostByCommentPostId = (postId?: number) => {
