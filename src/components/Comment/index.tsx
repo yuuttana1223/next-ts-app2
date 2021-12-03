@@ -1,6 +1,7 @@
 import { VFC } from "react";
 import Head from "next/head";
 import { useComment } from "src/hooks/useFetchJson";
+import { PostByCommentPostId } from "../Post/PostByCommentPostId";
 
 export const Comment: VFC = () => {
   const { data: comment, error, isLoading } = useComment();
@@ -19,8 +20,9 @@ export const Comment: VFC = () => {
         <title>{comment?.name}</title>
       </Head>
       <div>
-        <h1>{comment?.name}</h1>
-        <p>{comment?.body}</p>
+        <h1>[name]{comment?.name}</h1>
+        <p>[body]{comment?.body}</p>
+        <PostByCommentPostId postId={comment?.postId} />
       </div>
     </>
   );

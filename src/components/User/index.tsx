@@ -1,11 +1,10 @@
 import { VFC } from "react";
 import Head from "next/head";
 import { useUser } from "src/hooks/useFetchJson";
+import { PostsByUserId } from "src/components/Posts/PostsByUserId";
 
 export const User: VFC = () => {
   const { data: user, error, isLoading } = useUser();
-
-  console.log({ user, error, isLoading });
 
   if (isLoading) {
     return <div>ローディング中</div>;
@@ -21,8 +20,9 @@ export const User: VFC = () => {
         <title>{user?.name}</title>
       </Head>
       <div>
-        <h1>{user?.name}</h1>
-        <p>{user?.email}</p>
+        <h1>[name] {user?.name}</h1>
+        <p>[email] {user?.email}</p>
+        <PostsByUserId userId={user?.id} />
       </div>
     </>
   );

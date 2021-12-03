@@ -1,9 +1,11 @@
 import { VFC } from "react";
 import Head from "next/head";
 import { usePost } from "src/hooks/useFetchJson";
+import { UserByPostUserId } from "src/components/User/UserByPostUserId";
+import { CommentsByPostId } from "src/components/Comments/CommentsByPostId";
 
 export const Post: VFC = () => {
-  const { post, user, error, isLoading } = usePost();
+  const { data: post, error, isLoading } = usePost();
 
   if (isLoading) {
     return <div>ローディング中</div>;
@@ -18,13 +20,12 @@ export const Post: VFC = () => {
       <Head>
         <title>{post?.title}</title>
       </Head>
-      {user?.name && (
-        <div>
-          <h1>{post?.title}</h1>
-          <p>{post?.body}</p>
-          <div>Created by {user.name}</div>
-        </div>
-      )}
+      <div>
+        <h1>[title]{post?.title}</h1>
+        <p>[body] {post?.body}</p>
+        <UserByPostUserId userId={post?.userId} />
+        <CommentsByPostId postId={post?.id} />
+      </div>
     </>
   );
 };

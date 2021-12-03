@@ -21,6 +21,7 @@ export const Users: VFC = () => {
     <ol>
       {data?.map((user) => (
         <li key={user.id}>
+          [name]
           <Link href={`users/${user.id}`}>
             <a>{user.name}</a>
           </Link>

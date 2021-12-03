@@ -6,13 +6,9 @@ import { User } from "src/types/user";
 import { fetcher } from "src/utils/fetcher";
 import useSWR from "swr";
 
-const useFetchJson = <T>() => {
-  const router = useRouter();
-  // /users/[id] => users, /comments/[id] => comments
-  const parent: string = router.pathname.split("/")[1];
-
+const useFetchJson = <T>(parent: string, id?: string | number | string[]) => {
   const { data, error } = useSWR<T, Error>(
-    router.query.id ? `${API_URL}/${parent}/${router.query.id}` : null,
+    id ? `${API_URL}/${parent}/${id}` : null,
     fetcher
   );
 
@@ -24,24 +20,21 @@ const useFetchJson = <T>() => {
 };
 
 export const useUser = () => {
-  return useFetchJson<User>();
+  return useFetchJson<User>("users", useRouter().query.id);
 };
 
 export const useComment = () => {
-  return useFetchJson<Comment>();
+  return useFetchJson<Comment>("comments", useRouter().query.id);
 };
 
 export const usePost = () => {
-  const { data: post, error: postError } = useFetchJson<Post>();
-  const { data: user, error: userError } = useSWR<User, Error>(
-    post?.userId ? `${API_URL}/users/${post.userId}` : null,
-    fetcher
-  );
+  return useFetchJson<Post>("posts", useRouter().query.id);
+};
 
-  return {
-    post,
-    user,
-    error: postError || userError,
-    isLoading: !user && !userError && !post && !postError,
-  };
+export const useUserByPostUserId = (userId?: number) => {
+  return useFetchJson<User>("users", userId);
+};
+
+export const usePostByCommentPostId = (postId?: number) => {
+  return useFetchJson<Post>("posts", postId);
 };

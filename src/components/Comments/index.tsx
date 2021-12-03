@@ -21,6 +21,7 @@ export const Comments: VFC = () => {
     <ol>
       {data?.map((comment) => (
         <li key={comment.id}>
+          [body]
           <Link href={`comments/${comment.id}`}>
             <a>{comment.body}</a>
           </Link>
