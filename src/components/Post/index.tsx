@@ -21,9 +21,12 @@ export const Post: VFC = () => {
         <title>{post?.title}</title>
       </Head>
       <div>
-        <h1>[title]{post?.title}</h1>
-        <p>[body] {post?.body}</p>
         <UserByPostUserId userId={post?.userId} />
+        <h1 className="my-2 text-2xl font-bold">
+          [title id={post?.id}] {post?.title}
+        </h1>
+        <p className="text-lg text-gray-800">[body] {post?.body}</p>
+        <h2 className="mt-10 mb-2 text-lg font-bold">コメント一覧</h2>
         <CommentsByPostId postId={post?.id} />
       </div>
     </>

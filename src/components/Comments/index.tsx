@@ -18,15 +18,16 @@ export const Comments: VFC = () => {
   }
 
   return (
-    <ol>
+    <ul className="space-y-2">
       {data?.map((comment) => (
-        <li key={comment.id}>
-          [body]
+        <li key={comment.id} className="pb-2 border-b">
           <Link href={`comments/${comment.id}`}>
-            <a>{comment.body}</a>
+            <a className="block text-lg hover:text-blue-500">
+              [body id={comment.id}] {comment.body}
+            </a>
           </Link>
         </li>
       ))}
-    </ol>
+    </ul>
   );
 };

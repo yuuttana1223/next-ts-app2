@@ -18,15 +18,19 @@ export const Users: VFC = () => {
   }
 
   return (
-    <ol>
+    <ul className="grid grid-cols-1 gap-6 md:grid-cols-2">
       {data?.map((user) => (
-        <li key={user.id}>
-          [name]
+        <li key={user.id} className="rounded shadow">
           <Link href={`users/${user.id}`}>
-            <a>{user.name}</a>
+            <a className="block p-4 space-y-2 hover:bg-gray-100">
+              <h1 className="text-xl font-bold truncate">
+                [name id={user.id}] {user.name}
+              </h1>
+              <p className="truncate">[email] {user.email}</p>
+            </a>
           </Link>
         </li>
       ))}
-    </ol>
+    </ul>
   );
 };

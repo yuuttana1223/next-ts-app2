@@ -18,8 +18,12 @@ export const PostByCommentPostId: VFC<Props> = (props) => {
   }
 
   return (
-    <Link href={`/posts/${post?.id}`}>
-      <a>{post?.title && `[postTitle] ${post.title}`}</a>
+    <Link href={`posts/${post?.id}`}>
+      <a>
+        <p className="text-lg hover:text-blue-500">
+          [title id={post?.id}] {post?.title}
+        </p>
+      </a>
     </Link>
   );
 };

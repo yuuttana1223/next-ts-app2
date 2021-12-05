@@ -18,15 +18,19 @@ export const Posts: VFC = () => {
   }
 
   return (
-    <ol>
+    <ul className="space-y-4">
       {data?.map((post) => (
         <li key={post.id}>
-          [title]
           <Link href={`posts/${post.id}`}>
-            <a>{post.title}</a>
+            <a>
+              <h2 className="text-xl font-bold hover:text-blue-500">
+                [title id={post.id}] {post.title}
+              </h2>
+            </a>
           </Link>
+          <p className="text-gray-500 text">[body] {post.body}</p>
         </li>
       ))}
-    </ol>
+    </ul>
   );
 };

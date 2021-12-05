@@ -5,5 +5,7 @@ type Props = {
 };
 
 export const Layout: VFC<Props> = (props) => {
-  return <div className="max-w-2xl py-8 mx-auto">{props.children}</div>;
+  return (
+    <div className="max-w-3xl py-8 mx-auto md:max-w-5xl">{props.children}</div>
+  );
 };

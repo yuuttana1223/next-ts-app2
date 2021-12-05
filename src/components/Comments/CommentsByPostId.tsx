@@ -28,15 +28,16 @@ export const CommentsByPostId: VFC<Props> = (props) => {
   }
 
   return (
-    <ol>
+    <ul className="space-y-2">
       {comments?.map((comment) => (
-        <li key={comment.id}>
-          [commentBody]
-          <Link href={`/comments/${comment.id}`}>
-            <a>{comment.body}</a>
+        <li key={comment.id} className="pb-2 border-b">
+          <Link href={`comments/${comment.id}`}>
+            <a className="block hover:text-blue-500">
+              [body id={comment.id}] {comment.body}
+            </a>
           </Link>
         </li>
       ))}
-    </ol>
+    </ul>
   );
 };
