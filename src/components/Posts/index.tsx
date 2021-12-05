@@ -21,7 +21,7 @@ export const Posts: VFC = () => {
     <ul className="space-y-4">
       {data?.map((post) => (
         <li key={post.id}>
-          <Link href={`posts/${post.id}`}>
+          <Link href={`/posts/${post.id}`}>
             <a>
               <h2 className="text-xl font-bold hover:text-blue-500">
                 [title id={post.id}] {post.title}

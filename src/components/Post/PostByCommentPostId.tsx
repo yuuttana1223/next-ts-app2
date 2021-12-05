@@ -18,7 +18,7 @@ export const PostByCommentPostId: VFC<Props> = (props) => {
   }
 
   return (
-    <Link href={`posts/${post?.id}`}>
+    <Link href={`/posts/${post?.id}`}>
       <a>
         <p className="text-lg hover:text-blue-500">
           [title id={post?.id}] {post?.title}

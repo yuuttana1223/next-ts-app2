@@ -30,7 +30,7 @@ export const PostsByUserId: VFC<Props> = (props) => {
     <ul className="space-y-4">
       {posts?.map((post) => (
         <li key={post.id}>
-          <Link href={`posts/${post.id}`}>
+          <Link href={`/posts/${post.id}`}>
             <a>
               <h2 className="text-xl font-bold hover:text-blue-500">
                 [title id={post.id}] {post.title}
