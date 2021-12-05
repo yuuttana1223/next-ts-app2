@@ -3,13 +3,11 @@ import { API_URL } from "src/constants";
 import { Comment } from "src/types/comment";
 import { Post } from "src/types/post";
 import { User } from "src/types/user";
-import { fetcher } from "src/utils/fetcher";
 import useSWR from "swr";
 
 const useFetchJson = <T>(parent: string, id?: string | number | string[]) => {
   const { data, error } = useSWR<T, Error>(
-    id ? `${API_URL}/${parent}/${id}` : null,
-    fetcher
+    id ? `${API_URL}/${parent}/${id}` : null
   );
 
   return {
