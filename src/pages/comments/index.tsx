@@ -1,7 +1,7 @@
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import { Header } from "src/components/Header";
-import { Comments as CommentComponent } from "src/components/Comments";
+import { Comments as CommentsComponent } from "src/components/Comments";
 import { Comment } from "src/types/comment";
 import { API_URL } from "src/constants";
 import { SWRConfig } from "swr";
@@ -34,7 +34,7 @@ const Comments: NextPage<Props> = ({ fallback }) => {
       <div>
         <SWRConfig value={{ fallback }}>
           <Header />
-          <CommentComponent />
+          <CommentsComponent />
         </SWRConfig>
       </div>
     </>

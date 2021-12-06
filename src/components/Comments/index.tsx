@@ -21,7 +21,7 @@ export const Comments: VFC = () => {
     <ul className="space-y-2">
       {data?.map((comment) => (
         <li key={comment.id} className="pb-2 border-b">
-          <Link href={`/comments/${comment.id}`}>
+          <Link href={`/comments/${comment.id}`} prefetch={false}>
             <a className="block text-lg hover:text-blue-500">
               [body id={comment.id}] {comment.body}
             </a>
