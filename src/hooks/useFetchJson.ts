@@ -3,10 +3,10 @@ import { API_URL } from "src/constants";
 import { Comment } from "src/types/comment";
 import { Post } from "src/types/post";
 import { User } from "src/types/user";
-import useSWR from "swr";
+import useSWRImmutable from "swr/immutable";
 
 const useFetchJson = <T>(parent: string, id?: string | number | string[]) => {
-  const { data, error } = useSWR<T, Error>(
+  const { data, error } = useSWRImmutable<T, Error>(
     id ? `${API_URL}/${parent}/${id}` : null
   );
 

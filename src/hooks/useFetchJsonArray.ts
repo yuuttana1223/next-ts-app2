@@ -1,11 +1,11 @@
 import { Post } from "src/types/post";
 import { User } from "src/types/user";
-import useSWR from "swr";
+import useSWRImmutable from "swr/immutable";
 import { Comment } from "src/types/comment";
 import { API_URL } from "src/constants";
 
 const useFetchJsonArray = <T>(url: string) => {
-  const { data, error } = useSWR<T[], Error>(url);
+  const { data, error } = useSWRImmutable<T[], Error>(url);
 
   return {
     data,
