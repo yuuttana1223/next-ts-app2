@@ -1,19 +1,20 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { Header } from "src/components/Header";
+import { Posts as PostsComponent } from "src/components/Posts";
 
-const Home: NextPage = () => {
+const Posts: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Home Page</title>
+        <title>Posts Page</title>
       </Head>
       <div>
         <Header />
-        <h1>Next.jsで学ぶReact講座</h1>
-        <p>JSONPlaceholderのAPIを色々叩いてみるよ!</p>
+        <PostsComponent />
       </div>
     </>
   );
 };
-export default Home;
+
+export default Posts;

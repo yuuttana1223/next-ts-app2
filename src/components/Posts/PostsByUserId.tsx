@@ -1,9 +1,18 @@
 import { VFC } from "react";
+import { usePostsByUserId } from "src/hooks/useFetchJsonArray";
 import Link from "next/link";
-import { usePosts } from "src/hooks/useFetchJsonArray";
 
-export const Posts: VFC = () => {
-  const { data, error, isLoading, isEmpty } = usePosts();
+type Props = {
+  userId?: number;
+};
+
+export const PostsByUserId: VFC<Props> = (props) => {
+  const {
+    data: posts,
+    error,
+    isLoading,
+    isEmpty,
+  } = usePostsByUserId(props.userId);
 
   if (isLoading) {
     return <div>ローディング中</div>;
@@ -19,7 +28,7 @@ export const Posts: VFC = () => {
 
   return (
     <ul className="space-y-4">
-      {data?.map((post) => (
+      {posts?.map((post) => (
         <li key={post.id}>
           <Link href={`/posts/${post.id}`}>
             <a>
