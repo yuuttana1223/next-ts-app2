@@ -22,6 +22,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   if (!res.ok) {
     return {
       notFound: true,
+      revalidate: 10,
     };
   }
   const comment: Comment = await res.json();
@@ -31,6 +32,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         [COMMENT_API_URL]: comment,
       },
     },
+    revalidate: 10, // 秒数
   };
 };
 
