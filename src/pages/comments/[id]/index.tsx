@@ -1,9 +1,8 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import { Header } from "src/components/Header";
-import { API_URL } from "src/constants";
+import { API_URL } from "src/constants/api";
 import { SWRConfig } from "swr";
 import { Comment } from "src/types/comment";
-import { Comment as CommentComponent } from "src/components/Comment";
+import { CommentDetail } from "src/components/Comment/CommentDetail";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const res: Response = await fetch(`${API_URL}/comments?_limit=10`);
@@ -45,8 +44,7 @@ const Comment: NextPage<Props> = ({ fallback }) => {
   return (
     <div>
       <SWRConfig value={{ fallback }}>
-        <Header />
-        <CommentComponent />
+        <CommentDetail />
       </SWRConfig>
     </div>
   );

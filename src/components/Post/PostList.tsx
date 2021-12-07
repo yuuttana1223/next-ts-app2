@@ -1,9 +1,13 @@
 import { VFC } from "react";
 import Link from "next/link";
-import { usePosts } from "src/hooks/useFetchJsonArray";
+import { useFetchJsonArray } from "src/hooks/useFetchJsonArray";
+import { Post } from "src/types/post";
+import { API_URL } from "src/constants/api";
 
-export const Posts: VFC = () => {
-  const { data, error, isLoading, isEmpty } = usePosts();
+export const PostList: VFC = () => {
+  const { data, error, isLoading, isEmpty } = useFetchJsonArray<Post>(
+    `${API_URL}/posts`
+  );
 
   if (isLoading) {
     return <div>ローディング中</div>;

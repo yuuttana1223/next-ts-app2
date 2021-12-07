@@ -1,9 +1,13 @@
 import { VFC } from "react";
 import Link from "next/link";
-import { useUsers } from "src/hooks/useFetchJsonArray";
+import { useFetchJsonArray } from "src/hooks/useFetchJsonArray";
+import { API_URL } from "src/constants/api";
+import { User } from "src/types/user";
 
-export const Users: VFC = () => {
-  const { data, error, isLoading, isEmpty } = useUsers();
+export const UserList: VFC = () => {
+  const { data, error, isLoading, isEmpty } = useFetchJsonArray<User>(
+    `${API_URL}/users`
+  );
 
   if (isLoading) {
     return <div>ローディング中</div>;

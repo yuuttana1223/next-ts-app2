@@ -1,12 +1,10 @@
 import type { NextPage } from "next";
-import { Header } from "src/components/Header";
-import { Post as PostComponent } from "src/components/Post";
+import { PostDetail } from "src/components/Post/PostDetail";
 
 const Post: NextPage = () => {
   return (
     <div>
-      <Header />
-      <PostComponent />
+      <PostDetail />
     </div>
   );
 };

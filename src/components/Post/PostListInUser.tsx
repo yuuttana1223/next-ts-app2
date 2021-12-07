@@ -1,18 +1,22 @@
 import { VFC } from "react";
-import { usePostsByUserId } from "src/hooks/useFetchJsonArray";
 import Link from "next/link";
+import { API_URL } from "src/constants/api";
+import { Post } from "src/types/post";
+import { useFetchJsonArray } from "src/hooks/useFetchJsonArray";
 
 type Props = {
   userId?: number;
 };
 
-export const PostsByUserId: VFC<Props> = (props) => {
+export const PostListInUser: VFC<Props> = (props) => {
   const {
     data: posts,
     error,
     isLoading,
     isEmpty,
-  } = usePostsByUserId(props.userId);
+  } = useFetchJsonArray<Post>(
+    props.userId ? `${API_URL}/users/${props.userId}/posts` : null
+  );
 
   if (isLoading) {
     return <div>ローディング中</div>;

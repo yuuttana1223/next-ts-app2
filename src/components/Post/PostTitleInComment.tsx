@@ -1,13 +1,21 @@
 import { VFC } from "react";
-import { usePostByCommentPostId } from "src/hooks/useFetchJson";
 import Link from "next/link";
+import { useFetchJson } from "src/hooks/useFetchJson";
+import { API_URL } from "src/constants/api";
+import { Post } from "src/types/post";
 
 type Props = {
   postId?: number;
 };
 
-export const PostByCommentPostId: VFC<Props> = (props) => {
-  const { data: post, error, isLoading } = usePostByCommentPostId(props.postId);
+export const PostTitleInComment: VFC<Props> = (props) => {
+  const {
+    data: post,
+    error,
+    isLoading,
+  } = useFetchJson<Post>(
+    props.postId ? `${API_URL}/posts/${props.postId}` : null
+  );
 
   if (isLoading) {
     return <div>ローディング中</div>;

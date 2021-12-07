@@ -1,9 +1,7 @@
 import type { GetStaticProps, NextPage } from "next";
-import Head from "next/head";
-import { Header } from "src/components/Header";
-import { Comments as CommentsComponent } from "src/components/Comments";
+import { CommentList } from "src/components/Comment/CommentList";
 import { Comment } from "src/types/comment";
-import { API_URL } from "src/constants";
+import { API_URL } from "src/constants/api";
 import { SWRConfig } from "swr";
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -27,17 +25,11 @@ type Props = {
 
 const Comments: NextPage<Props> = ({ fallback }) => {
   return (
-    <>
-      <Head>
-        <title>Comments Page</title>
-      </Head>
-      <div>
-        <SWRConfig value={{ fallback }}>
-          <Header />
-          <CommentsComponent />
-        </SWRConfig>
-      </div>
-    </>
+    <div>
+      <SWRConfig value={{ fallback }}>
+        <CommentList />
+      </SWRConfig>
+    </div>
   );
 };
 

@@ -1,9 +1,16 @@
 import { VFC } from "react";
 import Link from "next/link";
-import { useComments } from "src/hooks/useFetchJsonArray";
+import { useFetchJsonArray } from "src/hooks/useFetchJsonArray";
+import { Comment } from "src/types/comment";
+import { API_URL } from "src/constants/api";
 
-export const Comments: VFC = () => {
-  const { data, error, isLoading, isEmpty } = useComments();
+export const CommentList: VFC = () => {
+  const {
+    data: comments,
+    error,
+    isLoading,
+    isEmpty,
+  } = useFetchJsonArray<Comment>(`${API_URL}/comments`);
 
   if (isLoading) {
     return <div>ローディング中</div>;
@@ -19,7 +26,7 @@ export const Comments: VFC = () => {
 
   return (
     <ul className="space-y-2">
-      {data?.map((comment) => (
+      {comments?.map((comment) => (
         <li key={comment.id} className="pb-2 border-b">
           <Link href={`/comments/${comment.id}`} prefetch={false}>
             <a className="block text-lg hover:text-blue-500">

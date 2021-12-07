@@ -1,19 +1,20 @@
 import { VFC } from "react";
-import { useCommentsByPostId } from "src/hooks/useFetchJsonArray";
+import { useFetchJsonArray } from "src/hooks/useFetchJsonArray";
 import Link from "next/link";
-import { useRouter } from "next/dist/client/router";
+import { API_URL } from "src/constants/api";
+import { Comment } from "src/types/comment";
 
 type Props = {
   postId?: number;
 };
 
-export const CommentsByPostId: VFC<Props> = (props) => {
+export const CommentListInPost: VFC<Props> = (props) => {
   const {
     data: comments,
     error,
     isLoading,
     isEmpty,
-  } = useCommentsByPostId(props.postId);
+  } = useFetchJsonArray<Comment>(`${API_URL}/posts/${props.postId}/comments`);
 
   if (isLoading) {
     return <div>ローディング中</div>;
