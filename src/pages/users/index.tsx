@@ -25,11 +25,9 @@ type Props = {
 
 const Users: NextPage<Props> = ({ fallback }) => {
   return (
-    <div>
-      <SWRConfig value={{ fallback }}>
-        <UserList />
-      </SWRConfig>
-    </div>
+    <SWRConfig value={{ fallback }}>
+      <UserList />
+    </SWRConfig>
   );
 };
 

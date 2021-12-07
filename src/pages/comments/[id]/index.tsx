@@ -44,11 +44,9 @@ type Props = {
 
 const Comment: NextPage<Props> = ({ fallback }) => {
   return (
-    <div>
-      <SWRConfig value={{ fallback }}>
-        <CommentDetail />
-      </SWRConfig>
-    </div>
+    <SWRConfig value={{ fallback }}>
+      <CommentDetail />
+    </SWRConfig>
   );
 };
 
